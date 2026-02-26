@@ -2,7 +2,7 @@ import pyautogui
 import tkinter as tk
 import keyboard as teclado
 
-""" Vou aprender sobre o tkinter e depois voltar com esse código
+"""# Vou aprender sobre o tkinter e depois voltar com esse código
 # Função para pegar a posição do mouse a cada 0,1 segundos (100ms)
 def posicao_mouse():
     # Pega a posição atual
@@ -40,7 +40,7 @@ label = tk.Label(root, font=("Arial", 16), padx=15, pady=15)
 # Comando para mandas as configurações de "Label" para a janela
 label.pack()
 
-posicao_mouse()
+#posicao_mouse()
 fecha_programa()
 
 # Comando para abrir janela e rodar em loop "infinito" até fechar
