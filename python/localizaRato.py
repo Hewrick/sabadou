@@ -1,54 +1,48 @@
 import pyautogui
-import tkinter as tk
+import tkinter as tk        # Referência: https://hub.asimov.academy/blog/o-que-e-tkinter/ ; https://docs.python.org/3/library/tkinter.html
 import keyboard as teclado
 
-"""# Vou aprender sobre o tkinter e depois voltar com esse código
 # Função para pegar a posição do mouse a cada 0,1 segundos (100ms)
 def posicao_mouse():
-    # Pega a posição atual
-    x, y = pyautogui.position()
-    # Atualiza o texto da label
-    label.config(text=f"X: {x}, Y: {y}")
-    # Função se chama após 100ms
-    root.after(100, posicao_mouse)
-"""
+    x, y = pyautogui.position() # Pega a posição atual
+    label_posicao_mouse.config(text=f"X: {x}, Y: {y}")
+    janela.after(100, posicao_mouse) # Função se chama após 100ms
 
 # Função para verificar se a tecla "ESC" foi precionada para fechar o programa
-def fecha_programa():
+def fecha_programa(janela_escolhida):
     # Se a tecla 'esc' for pressionada, fecha a janela
     if teclado.is_pressed('esc'):
-        root.destroy()
+        janela_escolhida.destroy(janela_escolhida)
+        janela2 = tk.Tk()
+    else if teclado.is_pressed('esc') and janela2:
+        janela2.destroy()
     else:
-        # Verifica novamente a cada 100ms
-        root.after(100, fecha_programa)
+        janela.after(100, fecha_programa(janela_escolhida)) # Verifica novamente a cada 100ms
 
 
 # Configuração da Janela
-# Essa linha é o objeto da janela com o identificador "root"
-root = tk.Tk()
-# Título da janela
-root.title("SABADOOU")
-# Define um tamanho fixo para a janelinha
-root.geometry("300x100")
-# Mantém a janela sempre no topo
-root.attributes("-topmost", True)
+# Criação do objeto da janela
+janela = tk.Tk()
+janela.title("SABADOOU")
+janela.geometry("300x100") # Define um tamanho fixo para a janela
+
+janela.attributes("-topmost", True) # Mantém a janela sempre no topo
 
 
-# Configuração do texto dentro da janela
-# tkinter.Label([endereço da mensagem], [atributos do texto (ex.: text; font; padx; pady)])
-label = tk.Label(root, font=("Arial", 16), padx=15, pady=15)
-# Comando para mandas as configurações de "Label" para a janela
-label.pack()
+# Configuração do label da posição do mouse
+label_posicao_mouse = tk.Label(janela, font=("Arial", 18), padx=15, pady=15)
+label_posicao_mouse.pack()
 
-#posicao_mouse()
+posicao_mouse()
 fecha_programa()
 
 # Comando para abrir janela e rodar em loop "infinito" até fechar
-root.mainloop()
+janela.mainloop()
 
 
 
 """ Notas:
+    - Como o programa é do tipo de loop infinito, preciso aprender a fazer funções para esse tipo de programa, mas parece ser simples lidar com isso;
     - É importante usar o objeto da janela como uma variável "root = tkinter.Tk()", 
 assim é possível fazer alterações nos atributos da janela 
     - "pyautogui.FAILSAFE = True" não funciona enquanto "tkinter.Tk().mainloop()" estiver ativo 
