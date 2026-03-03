@@ -1,43 +1,55 @@
 import pyautogui
-import tkinter as tk        # Referência: https://hub.asimov.academy/blog/o-que-e-tkinter/ ; https://docs.python.org/3/library/tkinter.html
+import tkinter as tk        # Referência: https://www.tutorialspoint.com/python/python_gui_programming.htm ; https://hub.asimov.academy/blog/o-que-e-tkinter/ ; https://docs.python.org/3/library/tkinter.html
 import keyboard as teclado
+
+
 
 # Função para pegar a posição do mouse a cada 0,1 segundos (100ms)
 def posicao_mouse():
     x, y = pyautogui.position() # Pega a posição atual
-    label_posicao_mouse.config(text=f"X: {x}, Y: {y}")
-    janela.after(100, posicao_mouse) # Função se chama após 100ms
+    label_posicao_mouse.config(text=f"{x}, {y}")
 
 # Função para verificar se a tecla "ESC" foi precionada para fechar o programa
-def fecha_programa(janela_escolhida):
+def fecha_programa():
     # Se a tecla 'esc' for pressionada, fecha a janela
     if teclado.is_pressed('esc'):
-        janela_escolhida.destroy(janela_escolhida)
-        janela2 = tk.Tk()
-    else if teclado.is_pressed('esc') and janela2:
-        janela2.destroy()
+        janela.destroy()
     else:
-        janela.after(100, fecha_programa(janela_escolhida)) # Verifica novamente a cada 100ms
+        janela.after(100, fecha_programa) # Verifica novamente a cada 100ms
 
 
+
+#   == Configurações de tudo na janela ==
 # Configuração da Janela
-# Criação do objeto da janela
-janela = tk.Tk()
+janela = tk.Tk() # Criação do objeto da janela
 janela.title("SABADOOU")
-janela.geometry("300x100") # Define um tamanho fixo para a janela
+janela.geometry("500x300") # Define um tamanho fixo para a janela
 
-janela.attributes("-topmost", True) # Mantém a janela sempre no topo
+
+
+
+# Layout base
+menu = tk.Frame()
+
+titulo = tk.Label(janela, text="Automatix", font=("Consolas", 18))
+titulo.pack()
+
+btn_addAcao = tk.Button(menu, text="✚")
+btn_addAcao.pack()
+
 
 
 # Configuração do label da posição do mouse
-label_posicao_mouse = tk.Label(janela, font=("Arial", 18), padx=15, pady=15)
+label_posicao_mouse = tk.Label(janela, font=("Consolas", 16))
 label_posicao_mouse.pack()
 
-posicao_mouse()
+
+#   == Iniciando o programa ==
+# btn = 1 then posicao_mouse()
+layout_base()
 fecha_programa()
 
-# Comando para abrir janela e rodar em loop "infinito" até fechar
-janela.mainloop()
+janela.mainloop() # Comando para abrir janela e rodar em loop "infinito" até fechar
 
 
 
