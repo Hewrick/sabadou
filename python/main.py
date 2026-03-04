@@ -8,6 +8,7 @@ import keyboard as teclado
 def posicao_mouse():
     x, y = pyautogui.position() # Pega a posição atual
     label_posicao_mouse.config(text=f"{x}, {y}")
+    janela.after(100, posicao_mouse)
 
 # Função para verificar se a tecla "ESC" foi precionada para fechar o programa
 def fecha_programa():
@@ -29,13 +30,13 @@ janela.geometry("500x300") # Define um tamanho fixo para a janela
 
 
 # Layout base
-menu = tk.Frame()
+#menu = tk.Frame()
 
 titulo = tk.Label(janela, text="Automatix", font=("Consolas", 18))
 titulo.pack()
 
-btn_addAcao = tk.Button(menu, text="✚")
-btn_addAcao.pack()
+#btn_addAcao = tk.Button(menu, text="✚")
+#btn_addAcao.pack()
 
 
 
@@ -46,8 +47,9 @@ label_posicao_mouse.pack()
 
 #   == Iniciando o programa ==
 # btn = 1 then posicao_mouse()
-layout_base()
+#layout_base()
 fecha_programa()
+posicao_mouse()
 
 janela.mainloop() # Comando para abrir janela e rodar em loop "infinito" até fechar
 
