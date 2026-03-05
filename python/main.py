@@ -29,14 +29,14 @@ janela.geometry("500x300") # Define um tamanho fixo para a janela
 
 
 
-# Layout base
-#menu = tk.Frame()
+# Layout base 
+menu = tk.Frame() # Estudar como desenvolver janela a partir de classes (sim, aqui no python)
 
 titulo = tk.Label(janela, text="Automatix", font=("Consolas", 18))
-titulo.pack()
+titulo.place(x=15,y=10)
 
-#btn_addAcao = tk.Button(menu, text="✚")
-#btn_addAcao.pack()
+btn_addAcao = tk.Button(menu, text="✚")
+btn_addAcao.pack()
 
 
 
