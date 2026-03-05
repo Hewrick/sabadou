@@ -6,10 +6,15 @@ robo.FAILSAFE = True
 robo.PAUSE = 0.8
 
 # Iniciando valores
+interrogacao = {
+    robo.keyDown('shift'),
+    robo.press('/'), # Tente '/' ou a tecla onde fica o '?' no seu layout
+    robo.keyUp('shift')
+}
 user = 'pedrohenrique0709.0709@gmail.com'
 senha = 'Murzzi?657'
 
-    
+
 def maximiza():
     if robo.getActiveWindow():
         robo.getActiveWindow().maximize()
@@ -22,7 +27,7 @@ robo.press('win')
 robo.write('chrome')
 robo.click(740, 440)
 maximiza()
-time.sleep(2)
+time.sleep(1)
 
 # Acessando site
 robo.write('spotify.com')
@@ -42,7 +47,7 @@ for i in range(1,10):
     robo.press('tab')
 robo.press('enter')
 
-for i in range(0, 4):
+for i in range(0, 7):
     robo.press('tab')
 robo.write(senha)
 robo.press('enter')
