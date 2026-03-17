@@ -21,3 +21,22 @@ Listbox 	Widget for displaying a list of items.
 Menu	    Widget for creating menus.
 Text	    Widget for multi-line text input/display.
 Tk	      Class for creating the main application window.
+
+
+
+Aprendizados:
+    - Como o programa é do tipo de loop infinito, preciso aprender a fazer funções para esse tipo de programa, mas parece ser simples lidar com isso;
+    - É importante usar o objeto da janela como uma variável "root = tkinter.Tk()", 
+assim é possível fazer alterações nos atributos da janela 
+    - "pyautogui.FAILSAFE = True" não funciona enquanto "tkinter.Tk().mainloop()" estiver ativo 
+    - "tkinter.Tk().mainloop()" precisa ser a última linha a ser executada. É como se fosse o "return"
+
+--> Código para printar a posição do mouse
+pyautogui.FAILSAFE = True # Configuração de segurança
+posicaoMouse = pyautogui.position()
+time.sleep(3)
+print(posicaoMouse)
+
+--> Esse comando mostra as coordenadas em tempo real no terminal!
+pyautogui.displayMousePosition() # Aperte Ctrl+C no terminal para parar
+

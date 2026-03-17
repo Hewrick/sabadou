@@ -28,10 +28,10 @@ class App(tk.Tk):
     # Configuração iniciais da Janela principal
     def __init__(self):
         super().__init__()
-        self.title("SABADOOU")
+        self.title("SABADOU")
         self.geometry("500x350") # Define um tamanho fixo para a janela
 
-        titulo = tk.Label(self, text="Programas", font=("Consolas", 18))
+        titulo = tk.Label(self, text="SF Automation", font=("Consolas", 18))
         titulo.place(x=15,y=10)
 
         menu = tk.Frame() # Estudar como desenvolver janela a partir de classes (sim, aqui no python)
@@ -52,27 +52,3 @@ fecha_programa()
 posicao_mouse()
 
 app.mainloop() # Comando para abrir janela e rodar em loop "infinito" até fechar
-
-
-
-""" Notas:
-    - Como o programa é do tipo de loop infinito, preciso aprender a fazer funções para esse tipo de programa, mas parece ser simples lidar com isso;
-    - É importante usar o objeto da janela como uma variável "root = tkinter.Tk()", 
-assim é possível fazer alterações nos atributos da janela 
-    - "pyautogui.FAILSAFE = True" não funciona enquanto "tkinter.Tk().mainloop()" estiver ativo 
-    - "tkinter.Tk().mainloop()" precisa ser a última linha a ser executada. É como se fosse o "return"
-"""
-
-
-""" #   == Código para printar a posição do mouse ==
-# Configuração de segurança
-pyautogui.FAILSAFE = True
-
-posicaoMouse = pyautogui.position()
-time.sleep(3)
-print(posicaoMouse)
-"""
-
-"""# Esse comando mostra as coordenadas em tempo real no terminal!
-pyautogui.displayMousePosition() # Aperte Ctrl+C no terminal para parar
-"""
