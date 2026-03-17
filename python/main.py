@@ -4,54 +4,54 @@ import keyboard as teclado
 
 
 
-# Função para pegar a posição do mouse a cada 0,1 segundos (100ms)
-def posicao_mouse():
-    x, y = pyautogui.position() # Pega a posição atual
-    label_posicao_mouse.config(text=f"{x}, {y}")
-    janela.after(100, posicao_mouse)
-
 # Função para verificar se a tecla "ESC" foi precionada para fechar o programa
 def fecha_programa():
     # Se a tecla 'esc' for pressionada, fecha a janela
     if teclado.is_pressed('esc'):
-        janela.destroy()
+        app.destroy()
     else:
-        janela.after(100, fecha_programa) # Verifica novamente a cada 100ms
+        app.after(100, fecha_programa) # Verifica novamente a cada 100ms
+
+def adicionar_campo():
+    btn_addAcao.pack()
+
+# Função para pegar a posição do mouse a cada 0,1 segundos (100ms)
+def posicao_mouse():
+    x, y = pyautogui.position() # Pega a posição atual
+    label_posicao_mouse.config(text=f"{x}, {y}")
+    app.after(100, posicao_mouse)
 
 
 
-#   == Configurações de tudo na janela ==
-# Configuração da Janela
-janela = tk.Tk() # Criação do objeto da janela
-janela.title("SABADOOU")
-janela.geometry("500x300") # Define um tamanho fixo para a janela
+#   == Configurações da Janela Principal ==
+class App(tk.Tk):
+    # Configuração iniciais da Janela principal
+    def __init__(self):
+        super().__init__()
+        self.title("SABADOOU")
+        self.geometry("500x350") # Define um tamanho fixo para a janela
 
+        titulo = tk.Label(self, text="Programas", font=("Consolas", 18))
+        titulo.place(x=15,y=10)
 
+        menu = tk.Frame() # Estudar como desenvolver janela a partir de classes (sim, aqui no python)
+        
+app = App()
 
-
-# Layout base 
-menu = tk.Frame() # Estudar como desenvolver janela a partir de classes (sim, aqui no python)
-
-titulo = tk.Label(janela, text="Automatix", font=("Consolas", 18))
-titulo.place(x=15,y=10)
-
-btn_addAcao = tk.Button(menu, text="✚")
-btn_addAcao.pack()
-
-
+btn_addAcao = tk.Button(app, command=adicionar_campo, text="✚", width=200, height=20)
+btn_addAcao.place()
 
 # Configuração do label da posição do mouse
-label_posicao_mouse = tk.Label(janela, font=("Consolas", 16))
-label_posicao_mouse.pack()
+label_posicao_mouse = tk.Label(app, font=("Consolas", 16))
+label_posicao_mouse.place(x=390,y=10)
 
 
 #   == Iniciando o programa ==
 # btn = 1 then posicao_mouse()
-#layout_base()
 fecha_programa()
 posicao_mouse()
 
-janela.mainloop() # Comando para abrir janela e rodar em loop "infinito" até fechar
+app.mainloop() # Comando para abrir janela e rodar em loop "infinito" até fechar
 
 
 
